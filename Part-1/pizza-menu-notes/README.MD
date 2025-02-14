@@ -539,3 +539,89 @@ root.render(
 
 );
 ```
+
+# Passing and receiving props
+
+**Notes:**
+
+- Props is essentially how we pass data between components (From parent component to child component)
+
+- Communication channel between a parent and a child component
+
+To define props we do it in 2 steps 
+
+1. First we pass the props into the component
+
+2. Second we receive the props in the component we pass them into 
+- we write props just as if they were normal attributes 
+
+- order in which we pass in the props is completely irrevelant 
+
+- Whenever we want to pass in something that is not a string we have to enter javascript mode (we can pass anything as props)
+
+```js
+function Menu() {
+
+  return (
+
+    <main className="menu">
+
+      <h2>Our menu</h2>
+
+      <Pizza
+
+        name="Pizza Spinaci"
+
+        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+
+        photoName="pizzas/spinaci.jpg"
+
+        price={10}
+
+      />
+
+      <Pizza
+
+        name="Pizza Funghi"
+
+        ingredients="Tomato,mushrooms"
+
+        price={12}
+
+        photoName="pizzas/funghi.jpg"
+
+      />
+
+    </main>
+
+  );
+
+}
+
+function Pizza(props) {
+
+  console.log(props);
+
+  return (
+
+    <div className="pizza">
+
+      <h3>{props.name}</h3>
+
+      <div>
+
+        <p>{props.ingredients}</p>
+
+        <img src={props.photoName} alt={props.name} />
+
+        <span>{props.price + 3}</span>
+
+      </div>
+
+    </div>
+
+  );
+
+}
+
+```
