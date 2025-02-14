@@ -1,5 +1,7 @@
 ### Rendering the Root Component and Strict Mode
 
+**Notes**:
+
 - Webpack which is the module bundler in create-react-app expects the entry point to be called index.js
 
 - Component must start with an upper case
@@ -42,6 +44,8 @@
 
 ### Before we start coding : Debugging(34)
 
+**Notes**:
+
 - Make sure application is running
   
   - stop and restart
@@ -69,6 +73,8 @@
 ![](../../assets/2.png)
 
 ### Creating and Reusing a Component
+
+**Notes:**
 
 - Component =>We write components using functions
 
@@ -236,11 +242,15 @@ root.render(
 
 ### What is JSX?
 
+**Notes**:
+
 ![](../../assets/3.png)
 
  ![](../../assets/4.png)
 
 ### Creating More Components(38)
+
+**Notes**:
 
 - We can write components as function defination , function expressions and arrow functions
 
@@ -346,6 +356,8 @@ root.render(
 
 ### Javascript Logic in Components(39)
 
+**Notes**:
+
 - Since components are javascript functions we can of course do any javascript in them that we want and that code is simply executed as soon as the function is called(As soon as the component is initialized)
 
 ```js
@@ -380,6 +392,8 @@ function Footer() {
 
 ### Seperation of Concerns(40)
 
+**Notes**:
+
 ![](../../assets/5.png)
 
 ![](../../assets/6.png)
@@ -387,6 +401,8 @@ function Footer() {
 ![](../../assets/7.png)
 
 ### Styling React Applications(41)
+
+**Notes**:
 
 - React is a library and hence it doesnt have an opinion about styling 
 
