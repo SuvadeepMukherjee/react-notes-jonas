@@ -1,4 +1,4 @@
-#### Rendering the Root Component and Strict Mode
+### Rendering the Root Component and Strict Mode
 
 - Webpack which is the module bundler in create-react-app expects the entry point to be called index.js
 
@@ -40,7 +40,7 @@
   );
   ```
 
-#### Before we start coding : Debugging(34)
+### Before we start coding : Debugging(34)
 
 - Make sure application is running
   
@@ -68,7 +68,7 @@
 
 ![](../../assets/2.png)
 
-#### Creating and Reusing a Component
+### Creating and Reusing a Component
 
 - Component =>We write components using functions
 
@@ -142,8 +142,6 @@ root.render(
   </React.StrictMode>
 
 );
-
-
 ```
 
 ```js
@@ -234,16 +232,15 @@ root.render(
   },
 
 ];
-
 ```
 
-#### What is JSX?
+### What is JSX?
 
 ![](../../assets/3.png)
 
  ![](../../assets/4.png)
 
-#### Creating More Components(38)
+### Creating More Components(38)
 
 - We can write components as function defination , function expressions and arrow functions
 
@@ -347,7 +344,7 @@ root.render(
 );
 ```
 
-#### 39.Javascript Logic in Components
+### Javascript Logic in Components(39)
 
 - Since components are javascript functions we can of course do any javascript in them that we want and that code is simply executed as soon as the function is called(As soon as the component is initialized)
 
@@ -381,7 +378,7 @@ function Footer() {
 }
 ```
 
-#### Seperation of Concerns(40)
+### Seperation of Concerns(40)
 
 ![](../../assets/5.png)
 
@@ -389,7 +386,7 @@ function Footer() {
 
 ![](../../assets/7.png)
 
-#### Styling React Applications(41)
+### Styling React Applications(41)
 
 - React is a library and hence it doesnt have an opinion about styling 
 
