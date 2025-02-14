@@ -1,4 +1,4 @@
-## Rendering the Root Component and Strict Mode
+# Rendering the Root Component and Strict Mode
 
 **Notes**:
 
@@ -42,7 +42,7 @@
   );
   ```
 
-## Before we start coding : Debugging(34)
+# Before we start coding : Debugging(34)
 
 **Notes**:
 
