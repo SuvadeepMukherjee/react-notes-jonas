@@ -1,4 +1,4 @@
-#### 33.Rendering the Root Component and Strict Mode
+#### Rendering the Root Component and Strict Mode
 
 - Webpack which is the module bundler in create-react-app expects the entry point to be called index.js
 
@@ -40,7 +40,7 @@
   );
   ```
 
-#### Before we start coding : Debugging
+#### Before we start coding : Debugging(34)
 
 - Make sure application is running
   
@@ -143,7 +143,11 @@ root.render(
 
 );
 
-const pizzaData = [
+
+```
+
+```js
+ const pizzaData = [
 
   {
 
@@ -230,6 +234,7 @@ const pizzaData = [
   },
 
 ];
+
 ```
 
 #### What is JSX?
@@ -238,7 +243,7 @@ const pizzaData = [
 
  ![](../../assets/4.png)
 
-#### 38.Creating More Components
+#### Creating More Components(38)
 
 - We can write components as function defination , function expressions and arrow functions
 
@@ -376,7 +381,7 @@ function Footer() {
 }
 ```
 
-#### 40.Seperation of Concerns
+#### Seperation of Concerns(40)
 
 ![](../../assets/5.png)
 
@@ -384,7 +389,7 @@ function Footer() {
 
 ![](../../assets/7.png)
 
-#### 41.Styling React Applications
+#### Styling React Applications(41)
 
 - React is a library and hence it doesnt have an opinion about styling 
 
@@ -520,5 +525,4 @@ root.render(
   </React.StrictMode>
 
 );
-
 ```
