@@ -66,13 +66,13 @@
 
 - Compare code with final version 
 
-#### Components as building blocks
+## Components as building blocks
 
 ![](../../assets/1.png)
 
 ![](../../assets/2.png)
 
-### Creating and Reusing a Component
+# Creating and Reusing a Component
 
 **Notes:**
 
@@ -240,7 +240,7 @@ root.render(
 ];
 ```
 
-### What is JSX?
+# What is JSX?
 
 **Notes**:
 
@@ -248,7 +248,7 @@ root.render(
 
  ![](../../assets/4.png)
 
-### Creating More Components(38)
+# Creating More Components(38)
 
 **Notes**:
 
@@ -354,7 +354,7 @@ root.render(
 );
 ```
 
-### Javascript Logic in Components(39)
+# Javascript Logic in Components(39)
 
 **Notes**:
 
@@ -390,7 +390,7 @@ function Footer() {
 }
 ```
 
-### Seperation of Concerns(40)
+# Seperation of Concerns(40)
 
 **Notes**:
 
@@ -400,7 +400,7 @@ function Footer() {
 
 ![](../../assets/7.png)
 
-### Styling React Applications(41)
+# Styling React Applications(41)
 
 **Notes**:
 
