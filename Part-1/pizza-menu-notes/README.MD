@@ -1125,3 +1125,58 @@ function Order({ closeHour, openHour }) {
 }
 
 ```
+
+# React Fragment
+
+- React Fragment basically lets us group some elements without leaving any trace in the HTML tree , so in the DOM 
+
+- Sometimes we need to add a key to a react fragment (When we are using it to render a list)
+
+- Allows us to have more than one element inside a piece of JSX
+
+```js
+function Menu() {
+
+  const pizzas = pizzaData;
+
+  //const pizzas = [];
+
+  const numPizzas = pizzas.length;
+
+  return (
+
+    <main className="menu">
+
+      <h2>Our menu</h2>
+
+      {numPizzas > 0 ? (
+
+        <>
+
+          <p>Authentic Italian cuisine</p>
+
+          <ul className="pizzas">
+
+            {pizzas.map((pizza) => (
+
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+
+            ))}
+
+          </ul>
+
+        </>
+
+      ) : (
+
+        <p>We're still working on our menu.Please come back later</p>
+
+      )}
+
+    </main>
+
+  );
+
+}
+
+```
