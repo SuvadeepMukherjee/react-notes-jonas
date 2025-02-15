@@ -636,3 +636,249 @@ function Pizza(props) {
 # The Rules of JSX
 
 ![](../../assets/jsx-rules.png)
+
+# Rendering Lists
+
+-    Rendering lists is when we have an array and we want to create one component for each element of the array
+
+- Each child in a list should have a unique key property , key is a prop which is internal to react which it needs in order for some performance optimizations(must be unique)
+
+- We use maps for rendeing lists is because this is the only way we get JSX is by creating a new array (thats why we use map)
+  
+  ```js
+  function Menu() {
+  
+    return (
+  
+      <main className="menu">
+  
+        <h2>Our menu</h2>
+  
+        <ul className="pizzas">
+  
+          {pizzaData.map((pizza) => (
+  
+            <Pizza pizzaObj={pizza} key={pizza.name} />
+  
+          ))}
+  
+        </ul>
+  
+      </main>
+  
+    );
+  
+  }
+  
+  function Pizza(props) {
+  
+    console.log(props);
+  
+    return (
+  
+      <li className="pizza">
+  
+        <div>
+  
+          <h3>{props.pizzaObj.name}</h3>
+  
+          <p>{props.pizzaObj.ingredients}</p>
+  
+          <img src={props.pizzaObj.photoName} alt={props.name} />
+  
+          <span>{props.pizzaObj.price}</span>
+  
+        </div>
+  
+      </li>
+  
+    );
+  
+  }
+  ```
+
+# Conditional Rendering with &&
+
+- Short Circuiting => if we have some truthy value and then if we use the && operator then the second part of the && operator will be returned in case that the condition is true
+
+- React does not render a boolean value (true/false) to the DOM 
+
+- React will not render true or false but will happily render 0 
+
+- We should try to do conditional rendering with the ternary operator
+
+```js
+ function Footer() {
+
+  const hour = new Date().getHours();
+
+  //console.log(hour);
+
+  const openHour = 12;
+
+  const closeHour = 22;
+
+  const isOpen = hour >= openHour && hour <= closeHour;
+
+  console.log(isOpen);
+
+  // if (hour >= openHour && hour <= closeHour) alert("We're currently open!");
+
+  // else alert("Sorry we're closed");
+
+  return (
+
+    <footer className="footer">
+
+      {isOpen && (
+
+        <div className="order">
+
+          <p>We're open until {closeHour}:00 .Comw visit us or order online</p>
+
+          <button className="btn">Order</button>
+
+        </div>
+
+      )}
+
+    </footer>
+
+  );
+```
+
+```js
+function Menu() {
+
+  const pizzas = pizzaData;
+
+  //const pizzas = [];
+
+  const numPizzas = pizzas.length;
+
+  return (
+
+    <main className="menu">
+
+      <h2>Our menu</h2>
+
+      {numPizzas > 0 && (
+
+        <ul className="pizzas">
+
+          {pizzas.map((pizza) => (
+
+            <Pizza pizzaObj={pizza} key={pizza.name} />
+
+          ))}
+
+        </ul>
+
+      )}
+
+    </main>
+
+  );
+
+}
+```
+
+# Conditional Rendering with Ternary Operators
+
+- We cannot write any if-else inside javascript mode , because we need to write something that actually produces a value and an if-else statement does not produce a value 
+
+```js
+function Menu() {
+
+  const pizzas = pizzaData;
+
+  //const pizzas = [];
+
+  const numPizzas = pizzas.length;
+
+  return (
+
+    <main className="menu">
+
+      <h2>Our menu</h2>
+
+      {numPizzas > 0 ? (
+
+        <ul className="pizzas">
+
+          {pizzas.map((pizza) => (
+
+            <Pizza pizzaObj={pizza} key={pizza.name} />
+
+          ))}
+
+        </ul>
+
+      ) : (
+
+        <p>We're still working on our menu.Please come back later</p>
+
+      )}
+
+    </main>
+
+  );
+
+}
+
+
+
+```
+
+```js
+function Footer() {
+
+  const hour = new Date().getHours();
+
+  //console.log(hour);
+
+  const openHour = 20;
+
+  const closeHour = 22;
+
+  const isOpen = hour >= openHour && hour <= closeHour;
+
+  console.log(isOpen);
+
+  // if (hour >= openHour && hour <= closeHour) alert("We're currently open!");
+
+  // else alert("Sorry we're closed");
+
+  return (
+
+    <footer className="footer">
+
+      {isOpen ? (
+
+        <div className="order">
+
+          <p>We're open until {closeHour}:00 .Comw visit us or order online</p>
+
+          <button className="btn">Order</button>
+
+        </div>
+
+      ) : (
+
+        <p>
+
+          We're happy to welcome you between {openHour}:00 and {closeHour}:00
+
+        </p>
+
+      )}
+
+    </footer>
+
+  );
+
+  
+
+}
+
+```
