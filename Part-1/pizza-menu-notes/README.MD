@@ -882,3 +882,38 @@ function Footer() {
 }
 
 ```
+
+# Conditional Rendering with Multiple Returns
+
+- We can return based on a condition 
+
+```js
+function Pizza(props) {
+
+  console.log(props);
+
+  if (props.pizzaObj.soldOut) return null;
+
+  return (
+
+    <li className="pizza">
+
+      <div>
+
+        <h3>{props.pizzaObj.name}</h3>
+
+        <p>{props.pizzaObj.ingredients}</p>
+
+        <img src={props.pizzaObj.photoName} alt={props.name} />
+
+        <span>{props.pizzaObj.price}</span>
+
+      </div>
+
+    </li>
+
+  );
+
+}
+
+```
