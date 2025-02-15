@@ -623,5 +623,12 @@ function Pizza(props) {
   );
 
 }
-
 ```
+
+# Props,Immutability and one way data flow
+
+![](../../assets/props-1.png)
+
+![](../../assets/props-2.png)
+
+![](../../assets/props-3.png)
