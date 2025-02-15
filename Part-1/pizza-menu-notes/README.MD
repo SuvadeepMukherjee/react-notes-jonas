@@ -632,3 +632,7 @@ function Pizza(props) {
 ![](../../assets/props-2.png)
 
 ![](../../assets/props-3.png)
+
+# The Rules of JSX
+
+![](../../assets/jsx-rules.png)
