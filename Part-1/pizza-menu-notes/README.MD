@@ -981,3 +981,147 @@ function Order(props) {
 }
 
 ```
+
+# Destructuring Props
+
+- All components receive props object (if it doesnt receive props it will be empty)
+
+```js
+function Menu() {
+
+  const pizzas = pizzaData;
+
+  //const pizzas = [];
+
+  const numPizzas = pizzas.length;
+
+  return (
+
+    <main className="menu">
+
+      <h2>Our menu</h2>
+
+      {numPizzas > 0 ? (
+
+        <ul className="pizzas">
+
+          {pizzas.map((pizza) => (
+
+            <Pizza pizzaObj={pizza} key={pizza.name} />
+
+          ))}
+
+        </ul>
+
+      ) : (
+
+        <p>We're still working on our menu.Please come back later</p>
+
+      )}
+
+    </main>
+
+  );
+
+}
+
+function Pizza({ pizzaObj }) {
+
+  //console.log(props);
+
+  if (pizzaObj.soldOut) return null;
+
+  return (
+
+    <li className="pizza">
+
+      <div>
+
+        <h3>{pizzaObj.name}</h3>
+
+        <p>{pizzaObj.ingredients}</p>
+
+        <img src={pizzaObj.photoName} alt={pizzaObj.name} />
+
+        <span>{pizzaObj.price}</span>
+
+      </div>
+
+    </li>
+
+  );
+
+}
+
+
+
+```
+
+```js
+function Footer() {
+
+  const hour = new Date().getHours();
+
+  //console.log(hour);
+
+  const openHour = 20;
+
+  const closeHour = 22;
+
+  const isOpen = hour >= openHour && hour <= closeHour;
+
+  console.log(isOpen);
+
+  // if (hour >= openHour && hour <= closeHour) alert("We're currently open!");
+
+  // else alert("Sorry we're closed");
+
+  return (
+
+    <footer className="footer">
+
+      {isOpen ? (
+
+        <Order closeHour={openHour} openHour={openHour} />
+
+      ) : (
+
+        <p>
+
+          We're happy to welcome you between {openHour}:00 and {closeHour}:00
+
+        </p>
+
+      )}
+
+    </footer>
+
+  );
+
+  //return React.createElement("footer", null, "We're currently open!");
+
+}
+
+function Order({ closeHour, openHour }) {
+
+  return (
+
+    <div className="order">
+
+      <p>
+
+        We're open from {openHour}:00 until {closeHour}:00 .Comw visit us or
+
+        order online
+
+      </p>
+
+      <button className="btn">Order</button>
+
+    </div>
+
+  );
+
+}
+
+```
