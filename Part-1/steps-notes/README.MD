@@ -274,7 +274,6 @@ We do not use addEventListener in React because that is the imperative way of bu
           Previous
 
         </button>
-
 ```
 
 It is not a function call rather a function.if we called the function then as soon as React initializes this component (App Function ) it will automatically call `alert("TEST)`
@@ -295,7 +294,6 @@ It is not a function call rather a function.if we called the function then as so
           Previous
 
         </button>
-
 ```
 
 We do not directly define the event handler function right in the onClick prop but instead we create a seperate function and pass it there . We create those eventHandler functions right in the component. The handle part  in the event handler function is pretty standard in React development
@@ -382,5 +380,18 @@ export default function App() {
   );
 
 }
-
 ```
+
+# What is State ?
+
+![](../../assets/state-1.png)
+
+![](../../assets/state-2.png)
+
+![](../../assets/state-3.png)
+
+![](../../assets/state-4.png)
+
+Examples of state can be simple things like a notication count , the text content of an input field or the active tab in a tab component , content of a shopping cart. Each of these components needs to hold this data over time(over the lifecycle of the applicaton). Each of these pieces of information is a piece of state . The term state is more about the entire state(entire condition at a certain point of time)
+
+A components view  is basically just the component visually rendered on the sceen (in the user interface). When one single component is rendered we call that a view . All the views combined together then make up the final user interface. State keeps data in sync with UI(We  change the state , we update the UI)
