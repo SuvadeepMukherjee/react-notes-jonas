@@ -979,7 +979,6 @@ function Order(props) {
   );
 
 }
-
 ```
 
 # Destructuring Props
@@ -1052,9 +1051,6 @@ function Pizza({ pizzaObj }) {
   );
 
 }
-
-
-
 ```
 
 ```js
@@ -1123,7 +1119,6 @@ function Order({ closeHour, openHour }) {
   );
 
 }
-
 ```
 
 # React Fragment
@@ -1174,6 +1169,48 @@ function Menu() {
       )}
 
     </main>
+
+  );
+
+}
+```
+
+# Setting Classes and Texts Conditionally
+
+```js
+function Pizza({ pizzaObj }) {
+
+  //console.log(props);
+
+  //if (pizzaObj.soldOut) return null;
+
+  return (
+
+    <li className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
+
+      <div>
+
+        <h3>{pizzaObj.name}</h3>
+
+        <p>{pizzaObj.ingredients}</p>
+
+        <img src={pizzaObj.photoName} alt={pizzaObj.name} />
+
+        {/* {pizzaObj.soldOut ? (
+
+          <span>SOLD OUT</span>
+
+        ) : (
+
+          <span>{pizzaObj.price}</span>
+
+        )} */}
+
+        <span>{pizzaObj.soldOut ? "SOLD OUT" : pizzaObj.price}</span>
+
+      </div>
+
+    </li>
 
   );
 
