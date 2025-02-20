@@ -23,6 +23,7 @@ export default function App() {
       </div>
       <p className="message">
         Step {step}:{messages[step - 1]}
+        {test.name}{" "}
       </p>
       <div className="buttons">
         <button

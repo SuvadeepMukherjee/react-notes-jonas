@@ -502,3 +502,141 @@ export default function App() {
 }
 
 ```
+
+# Dont set state manually
+
+```js
+export default function App() {
+  const [step, setStep] = useState(1);
+  const [test, setTest] = useState({ name: "Jonass" });
+
+  function handlePrevious() {
+    if (step > 1) setStep(step - 1);
+  }
+  function handleNext() {
+    // if (step < 3) setStep(step + 1);
+    test.name = "Fred";
+    setTest({ name: "Fred" });
+    step = step + 1;
+  }
+  return (
+    <div className="steps">
+      <div className="numbers">
+        <div className={step >= 1 ? "active" : ""}>1</div>
+        <div className={step >= 2 ? "active" : ""}>2</div>
+        <div className={step >= 3 ? "active" : ""}>3</div>
+      </div>
+      <p className="message">
+        Step {step}:{messages[step - 1]}
+        {test.name}{" "}
+      </p>
+      <div className="buttons">
+        <button
+          style={{ backgroundColor: "#7950f2", color: "#fff" }}
+          onClick={handlePrevious}
+        >
+          Previous
+        </button>
+        <button
+          style={{ backgroundColor: "#7950f2", color: "#fff" }}
+          onClick={handleNext}
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  );
+}
+
+```
+
+React has no magic way of knowing that this is the state variable and this operation is basically updating it .Thats why react provided us a setter function which is the functional way of updating state but without mutating it .React is all about immutability .Therefore we can only update the state using the tools that React gives us (setter function).When we use the functional way of updating state then react does know that this is the state variable that should be updated . Mutating the object directly will trigger a new re-render of the component view.However mutating objects like this is a really bad practise .React doesnt want us to do this (in complex calculations this will not work).Its a bad practise of mutating objects in a framework like React which is all about immutabilty and functional state updates .Always treat state as immutable in React (Something that we cannot change directly but change using the tools that react gives us) 
+
+Final Code
+
+```js
+import { useState } from "react";
+
+const messages = [
+
+  "Learn React ⚛️",
+
+  "Apply for jobs 💼",
+
+  "Invest your new income 🤑",
+
+];
+
+export default function App() {
+
+  const [step, setStep] = useState(1);
+
+  function handlePrevious() {
+
+    if (step > 1) setStep(step - 1);
+
+  }
+
+  function handleNext() {
+
+    if (step < 3) setStep(step + 1);
+
+  }
+
+  return (
+
+    <div className="steps">
+
+      <div className="numbers">
+
+        <div className={step >= 1 ? "active" : ""}>1</div>
+
+        <div className={step >= 2 ? "active" : ""}>2</div>
+
+        <div className={step >= 3 ? "active" : ""}>3</div>
+
+      </div>
+
+      <p className="message">
+
+        Step {step}:{messages[step - 1]}
+
+        {test.name}{" "}
+
+      </p>
+
+      <div className="buttons">
+
+        <button
+
+          style={{ backgroundColor: "#7950f2", color: "#fff" }}
+
+          onClick={handlePrevious}
+
+        >
+
+          Previous
+
+        </button>
+
+        <button
+
+          style={{ backgroundColor: "#7950f2", color: "#fff" }}
+
+          onClick={handleNext}
+
+        >
+
+          Next
+
+        </button>
+
+      </div>
+
+    </div>
+
+  );
+
+}
+
+```
