@@ -640,3 +640,17 @@ export default function App() {
 }
 
 ```
+
+# The Mechanics of State
+
+React updates a component view by re-rendering that entire component whenever the underlying data changes 
+
+State is preserved throughout re-renders (state will not be reset unless the component disappears from the UI entirely which is called unmounting)
+
+![](../../assets/state-mechanics-1.png)
+
+![](../../assets/state-mechanics-2.png)
+
+![](../../assets/state-mechnics-3.png)
+
+![](../../assets/state-mechanics-4.png)
