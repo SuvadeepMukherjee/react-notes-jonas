@@ -395,3 +395,110 @@ export default function App() {
 Examples of state can be simple things like a notication count , the text content of an input field or the active tab in a tab component , content of a shopping cart. Each of these components needs to hold this data over time(over the lifecycle of the applicaton). Each of these pieces of information is a piece of state . The term state is more about the entire state(entire condition at a certain point of time)
 
 A components view  is basically just the component visually rendered on the sceen (in the user interface). When one single component is rendered we call that a view . All the views combined together then make up the final user interface. State keeps data in sync with UI(We  change the state , we update the UI)
+
+# Creating a State variable with useState
+
+To use state in practise in a component we do it in 3 steps 
+
+1. Add a new state variable
+
+2. Use it in code usually in JSX
+
+3. update the piece of state in some event handler
+
+useState is a function so it takes an argument which is the default value of this state variable 
+
+useState returns an array . It returns 2 things in the array , the first value is the default state and the second value is a setter function that updates the state and we immediately destructure it 
+
+```js
+const [step, setStep] = useState(1);
+```
+
+useState is a hook , hooks start with use , we can only call hooks at the top level of a function (not inside an if statement , inside loops or inside another function). We should only update state using the setter function 
+
+When the state changes React re-renders the DOM 
+
+```js
+import { useState } from "react";
+
+const messages = [
+
+  "Learn React ⚛️",
+
+  "Apply for jobs 💼",
+
+  "Invest your new income 🤑",
+
+];
+
+export default function App() {
+
+  const [step, setStep] = useState(1);
+
+  function handlePrevious() {
+
+    if (step > 1) setStep(step - 1);
+
+  }
+
+  function handleNext() {
+
+    if (step < 3) setStep(step + 1);
+
+  }
+
+  return (
+
+    <div className="steps">
+
+      <div className="numbers">
+
+        <div className={step >= 1 ? "active" : ""}>1</div>
+
+        <div className={step >= 2 ? "active" : ""}>2</div>
+
+        <div className={step >= 3 ? "active" : ""}>3</div>
+
+      </div>
+
+      <p className="message">
+
+        Step {step}:{messages[step - 1]}
+
+      </p>
+
+      <div className="buttons">
+
+        <button
+
+          style={{ backgroundColor: "#7950f2", color: "#fff" }}
+
+          onClick={handlePrevious}
+
+        >
+
+          Previous
+
+        </button>
+
+        <button
+
+          style={{ backgroundColor: "#7950f2", color: "#fff" }}
+
+          onClick={handleNext}
+
+        >
+
+          Next
+
+        </button>
+
+      </div>
+
+    </div>
+
+  );
+
+}
+
+```
