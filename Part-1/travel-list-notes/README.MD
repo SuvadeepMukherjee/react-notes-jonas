@@ -62,7 +62,6 @@ function Stats() {
   );
 
 }
-
 ```
 
 index.css
@@ -307,7 +306,6 @@ input[type="checkbox"] {
   padding: 3.2rem 0;
 
 }
-
 ```
 
 # Rendering the Item List
@@ -422,7 +420,6 @@ function Stats() {
   );
 
 }
-
 ```
 
 # Building a Form and Handling Submissions
@@ -475,7 +472,6 @@ We can submit the Form by clicking on the submit button or hitting the enter key
   );
 
 }
-
 ```
 
 # Controlled Elements
@@ -560,11 +556,190 @@ function Form() {
   );
 
 }
-
 ```
 
 # State vs Props
 
 ![](../../assets/state-props.png)
 
+# Flashcards-Exercise
 
+on the onClick event handler we need to pass in an actual function and not a function call(react will call the functions as soon as the event happens)
+
+```js
+function FlashCards() {
+
+  const [selectedId, setSelectedId] = useState(null);
+
+  function handleClick(id) {
+
+    setSelectedId(id !== selectedId ? id : null);
+
+  }
+
+  return (
+
+    <div className="flashcards">
+
+      {questions.map((question) => (
+
+        <div
+
+          key={question.id}
+
+          className={question.id === selectedId ? "selected" : ""}
+
+          onClick={() => handleClick(question.id)}
+
+        >
+
+          <p>
+
+            {question.id === selectedId ? question.answer : question.question}
+
+          </p>
+
+        </div>
+
+      ))}
+
+    </div>
+
+  );
+
+}
+
+
+
+```
+
+Entire Code
+
+```js
+import { useState } from "react";
+
+import "./styles.css";
+
+export default function App() {
+
+  return (
+
+    <div className="App">
+
+      <FlashCards />
+
+    </div>
+
+  );
+
+}
+
+const questions = [
+
+  {
+
+    id: 3457,
+
+    question: "What language is React based on?",
+
+    answer: "JavaScript",
+
+  },
+
+  {
+
+    id: 7336,
+
+    question: "What are the building blocks of React apps?",
+
+    answer: "Components",
+
+  },
+
+  {
+
+    id: 8832,
+
+    question: "What's the name of the syntax we use to describe a UI in React?",
+
+    answer: "JSX",
+
+  },
+
+  {
+
+    id: 1297,
+
+    question: "How to pass data from parent to child components?",
+
+    answer: "Props",
+
+  },
+
+  {
+
+    id: 9103,
+
+    question: "How to give components memory?",
+
+    answer: "useState hook",
+
+  },
+
+  {
+
+    id: 2002,
+
+    question:
+
+      "What do we call an input element that is completely synchronised with state?",
+
+    answer: "Controlled element",
+
+  },
+
+];
+
+function FlashCards() {
+
+  const [selectedId, setSelectedId] = useState(null);
+
+  function handleClick(id) {
+
+    setSelectedId(id !== selectedId ? id : null);
+
+  }
+
+  return (
+
+    <div className="flashcards">
+
+      {questions.map((question) => (
+
+        <div
+
+          key={question.id}
+
+          className={question.id === selectedId ? "selected" : ""}
+
+          onClick={() => handleClick(question.id)}
+
+        >
+
+          <p>
+
+            {question.id === selectedId ? question.answer : question.question}
+
+          </p>
+
+        </div>
+
+      ))}
+
+    </div>
+
+  );
+
+}
+
+```
