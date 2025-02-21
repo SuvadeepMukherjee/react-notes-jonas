@@ -608,9 +608,6 @@ function FlashCards() {
   );
 
 }
-
-
-
 ```
 
 Entire Code
@@ -741,5 +738,10 @@ function FlashCards() {
   );
 
 }
-
 ```
+
+# What is Thinking in React ?
+
+![](../../assets/thinking-react-1.png)
+
+![](../../assets/thinking-react-2.png)
