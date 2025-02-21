@@ -745,3 +745,11 @@ function FlashCards() {
 ![](../../assets/thinking-react-1.png)
 
 ![](../../assets/thinking-react-2.png)
+
+# Fundamentals of State Management
+
+![](../../assets/state-management-1.png)
+
+![](../../assets/z-1.png)
+
+![](../../assets/state-management-3.png)
