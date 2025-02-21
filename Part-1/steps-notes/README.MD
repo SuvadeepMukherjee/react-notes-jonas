@@ -774,7 +774,6 @@ function handlePrevious() {
       //setStep((s) => s + 1);
 
     }
-
 ```
 
 When we are not setting state based on the current state then of course we can just pass in the value as normal
@@ -793,7 +792,6 @@ function handleNext() {
     }
 
   }
-
 ```
 
 final code
@@ -904,5 +902,12 @@ export default function App() {
   );
 
 }
-
 ```
+
+# More thoughts About state + state Guidelines
+
+![](../../assets/guidelines-state-1.png)
+
+![](../../assets/guidelines-state-2.png)
+
+![](../../assets/guidelines-state-3.png)
