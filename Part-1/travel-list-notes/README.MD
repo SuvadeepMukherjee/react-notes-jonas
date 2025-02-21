@@ -425,4 +425,55 @@ function Stats() {
 
 ```
 
+# Building a Form and Handling Submissions
 
+We use the HTML form element 
+
+To create a bunch of options we use this trick which is used all over in React basically creating a array of 20 elements then mapping it into <options>
+
+![](../../assets/options.png)
+
+We can submit the Form by clicking on the submit button or hitting the enter key when we listen for event handlers on the form .In Single page applications we usually can submit a form without the page reloading . So we disable the default behavior of HTML. As soon as the submit event happens React will call handleSubmit function and when it does so it will pass into the function the event object (object with all the information about the current event) , Similar to what happens in vanilla js , If we listened only on onClick Event then the enter would not be captured
+
+```js
+  function Form() {
+
+  function handleSubmit(e) {
+
+    e.preventDefault();
+
+    console.log(e);
+
+  }
+
+  return (
+
+    <form className="add-form" onSubmit={handleSubmit}>
+
+      <h3>What do you need for your 😍 trip ?</h3>
+
+      <select>
+
+        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+
+          <option value={num} key={num}>
+
+            {num}
+
+          </option>
+
+        ))}
+
+      </select>
+
+      <input type="text" placeholder="Item..." />
+
+      <button>Add</button>
+
+    </form>
+
+  );
+
+}
+
+```
