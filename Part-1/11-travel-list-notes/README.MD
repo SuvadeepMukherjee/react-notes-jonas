@@ -953,3 +953,15 @@ function Stats() {
 } 
 
 ```
+
+# Reviewing Lifting Up State
+
+Child to parent communication(inverse data flow): 
+
+if data flows from parent to children , how can promotions (child) update state in checkout(parent) . The Solution is to pass the setCoupons function down as a prop to the components who need to update the state .Now that we have the setCoupons function in promotions once a new coupon is added we can simply use setCoupons to update the state that lies in the parent component 
+
+![](../../assets/child-parent-communication-1.png)
+
+![](../../assets/child-parent-communication-2.png)
+
+![](../../assets/child-parent-communication-3.png)
