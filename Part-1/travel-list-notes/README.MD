@@ -477,3 +477,94 @@ We can submit the Form by clicking on the submit button or hitting the enter key
 }
 
 ```
+
+# Controlled Elements
+
+Input fields maintain their own state inside the DOM (inside the HTML elements itself).In React we usually like to keep all the state in just one central place inside the react application and not inside the DOM .In order to do that we use a technique called controlled elements .With this technique it is react who controls and owns the state of the input fields and no longer the DOM . Since we want to now keep this data inside the application what that means is we need some state(Because that form data of course changes over time and we also want to maintain our application in sync with it).In order to implement the controlled elements technique we follow 3 steps 
+
+1. we create a piece of state
+
+2. now we use the state as a value of our input field
+
+3. listen for the change event on the same element and set it to the setter of the state . Whenever we type something in the input field the change event is fired off and we can react to that event with the onChange eventHandler
+
+```js
+function Form() {
+
+  const [description, setDescription] = useState("");
+
+  const [quantity, setQuantity] = useState(1);
+
+  function handleSubmit(e) {
+
+    e.preventDefault();
+
+    //gard clause
+
+    if (!description) return; //return if desrciption absent
+
+    //console.log(e);
+
+    const newItem = { description, quantity, packed: false, id: Date.now() };
+
+    console.log(newItem);
+
+    setDescription(""); //reset state to initial state
+
+    setQuantity(1); //reset state to initial state
+
+  }
+
+  return (
+
+    <form className="add-form" onSubmit={handleSubmit}>
+
+      <h3>What do you need for your 😍 trip ?</h3>
+
+      <select
+
+        value={quantity}
+
+        onChange={(e) => setQuantity(Number(e.target.value))}
+
+      >
+
+        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+
+          <option value={num} key={num}>
+
+            {num}
+
+          </option>
+
+        ))}
+
+      </select>
+
+      <input
+
+        type="text"
+
+        placeholder="Item..."
+
+        value={description}
+
+        onChange={(e) => setDescription(e.target.value)}
+
+      />
+
+      <button>Add</button>
+
+    </form>
+
+  );
+
+}
+
+```
+
+
+
+
+
+
