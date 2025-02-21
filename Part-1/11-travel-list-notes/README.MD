@@ -753,3 +753,203 @@ function FlashCards() {
 ![](../../assets/z-1.png)
 
 ![](../../assets/state-management-3.png)
+
+# Thinking about state and Lifting state up
+
+The newItems Array will basically be the current items array plus the new items added to the end i.e the new state depends on the current state and thus we need to pass in a callback function 
+
+```js
+function handleAddItems(item) {
+
+    setItems((items) => [...items, item]);
+
+  }
+
+```
+
+In React we are not allowed to mutate state . So we cannot simply push to the Array (React is about immutability). So the solution is to create a brand new array which contains all the current items plus the new one 
+
+It is a convention to call handleAddItems as onAddItems (we could create an exact same prop and then pass it to function with the same name but its kind of a convention for it to be like this as it becomes more readable)
+
+Lift up state :- Whenever multiple sibling components need access to the same state we move that piece of state up to the first common parent component
+
+```js
+import { useState } from "react";
+
+const initialItems = [
+
+  { id: 1, description: "Passports", quantity: 2, packed: false },
+
+  { id: 2, description: "Socks", quantity: 12, packed: true },
+
+  { id: 3, description: "Charger", quantity: 1, packed: false },
+
+];
+
+export default function App() {
+
+  const [items, setItems] = useState([]);
+
+  function handleAddItems(item) {
+
+    setItems((items) => [...items, item]);
+
+  }
+
+  return (
+
+    <div className="app">
+
+      <Logo />
+
+      <Form onAddItems={handleAddItems} />
+
+      <PackingList items={items} />
+
+      <Stats />
+
+    </div>
+
+  );
+
+}
+
+function Logo() {
+
+  return <h1>🌴Far Away💼</h1>;
+
+}
+
+function Form({ onAddItems }) {
+
+  const [description, setDescription] = useState("");
+
+  const [quantity, setQuantity] = useState(1);
+
+  function handleSubmit(e) {
+
+    e.preventDefault();
+
+    //gard clause
+
+    if (!description) return; //return if desrciption absent
+
+    //console.log(e);
+
+    const newItem = { description, quantity, packed: false, id: Date.now() };
+
+    console.log(newItem);
+
+    setDescription(""); //reset state to initial state
+
+    setQuantity(1); //reset state to initial state
+
+    onAddItems(newItem);
+
+  }
+
+  return (
+
+    <form className="add-form" onSubmit={handleSubmit}>
+
+      <h3>What do you need for your 😍 trip ?</h3>
+
+      <select
+
+        value={quantity}
+
+        onChange={(e) => setQuantity(Number(e.target.value))}
+
+      >
+
+        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+
+          <option value={num} key={num}>
+
+            {num}
+
+          </option>
+
+        ))}
+
+      </select>
+
+      <input
+
+        type="text"
+
+        placeholder="Item..."
+
+        value={description}
+
+        onChange={(e) => setDescription(e.target.value)}
+
+      />
+
+      <button>Add</button>
+
+    </form>
+
+  );
+
+}
+
+function PackingList({ items }) {
+
+  return (
+
+    <div className="list">
+
+      <ul>
+
+        {items.map((item) => (
+
+          <Item item={item} key={item.id} />
+
+        ))}
+
+      </ul>
+
+    </div>
+
+  );
+
+}
+
+function Item({ item }) {
+
+  return (
+
+    <li>
+
+      <span style={item.packed ? { textDecoration: "line-through" } : {}}>
+
+        {item.quantity}
+
+        {item.description}
+
+      </span>
+
+      <button>❌</button>
+
+    </li>
+
+  );
+
+}
+
+function Stats() {
+
+  return (
+
+    <footer className="stats">
+
+      <em>💼 You have X items on your list , and you already packed X (X%)</em>
+
+    </footer>
+
+  );
+
+} 
+
+```
