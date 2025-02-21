@@ -563,8 +563,8 @@ function Form() {
 
 ```
 
+# State vs Props
 
-
-
+![](../../assets/state-props.png)
 
 
