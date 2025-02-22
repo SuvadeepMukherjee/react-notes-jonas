@@ -1140,5 +1140,38 @@ function Stats() {
   );
 
 }
+```
+
+# Updating an Item : Complex Immutable Data Operation
+
+Controlled Element: The element has the value defined by some state and it also has an event handler which listens for the change and updates the state accordingly 
+
+```jsx
+<input
+
+        type="checkbox"
+
+        value={item.packed}
+
+        onChange={() => onToggleItem(item.id)}
+
+      />
+
+```
+
+```js
+function handleToggleItem(id) {
+
+    setItems((items) =>
+
+      items.map((item) =>
+
+        item.id === id ? { ...item, packed: !item.packed } : item
+
+      )
+
+    );
+
+  }
 
 ```
