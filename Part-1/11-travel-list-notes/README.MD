@@ -2043,3 +2043,21 @@ function Stats({ items }) {
 }
 
 ```
+
+# Moving Components into separate Files
+
+We move all components into their seperate files by default export and then importing them
+
+```js
+
+export default function Logo() {
+
+  return <h1>🌴Far Away💼</h1>;
+
+}
+
+```
+
+```js
+import Logo from "./Logo";
+```
